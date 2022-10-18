@@ -34,7 +34,6 @@ class Interface(Tk):
         for files in b:
             try:
                 dst = (f'{dir}/{files.suffix}/{files.name}')
-                print(dst)
                 move(src=files, dst=dst)
             except FileNotFoundError:
                 continue
