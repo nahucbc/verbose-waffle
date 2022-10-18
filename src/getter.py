@@ -14,11 +14,11 @@ def get_all(path): # Retornar todo del directorio;
             # los sufijos vacios o llenos son determinantes
             # ya que los vacios serian tipo Downloads no lleva sufijo, entonces por descarte es una carpeta
             # los sufijos llenos serian tipo los Downloads.py que llevan sufijo, por descarte es un archivo
-            if i.suffix != '': # si el sufijo es diferente al vacio se ejecutara, en este caso es un archivo
+            if i.is_file(): # si el sufijo es diferente al vacio se ejecutara, en este caso es un archivo
                 all['files'].append(i) # agregar valores al diccionario all, en la parte de files
                 if i.suffix not in all['suffixes']: # si el sufijo no esta en la lista, se agrega
                     all['suffixes'].append(i.suffix) # agregar valores al diccionario all, en la parte de suffixes
-            elif i.suffix == '': # si el sufijo es diferente al lleno se ejecutara, en este caso es una carpeta
+            elif i.is_dir(): # si el sufijo es diferente al lleno se ejecutara, en este caso es una carpeta
                 all['subdir'].append(i) # agregar valores al diccionario all, en la parte de subdir
             
     return all['subdir'], all['files'], all['suffixes']
